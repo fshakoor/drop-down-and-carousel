@@ -42,9 +42,10 @@
     align-items: center;
 }
 
-/* .carousel, .main-carousel-image, .backward-carousel-image, .forward-carousel-image {
-    border: 1px solid black;
-} */
+.carousel, .main-carousel-image, .backward-carousel-image, .forward-carousel-image {
+    border: 1px solid white;
+    border-radius: 8px;
+}
 
 .main-carousel-image {
     width: 500px;

@@ -127,8 +127,25 @@ function advanceCarouselFoward() {
   forwardCarouselImage.src = imagesArray[forwardImageIndex]
 }
 
+function advanceCarouselBackward() {
+    backImageIndex=backImageIndex-1
+    mainImageIndex=mainImageIndex-1
+    forwardImageIndex=forwardImageIndex-1
+    if (backImageIndex < 0) {backImageIndex = 3}
+    if (mainImageIndex < 0) {mainImageIndex = 3}
+    if (forwardImageIndex < 0) {forwardImageIndex = 3}
+  
+    backwardCarouselImage.src = imagesArray[backImageIndex]
+    mainCarouselImage.src = imagesArray[mainImageIndex]
+    forwardCarouselImage.src = imagesArray[forwardImageIndex]
+}
+
 forwardButton.addEventListener("click", () => {
     advanceCarouselFoward();
+})
+
+backwardButton.addEventListener("click", () => {
+    advanceCarouselBackward();
 })
 
 carousel.appendChild(backwardButton);
