@@ -1,0 +1,41 @@
+.drop-down {
+  border: 1px solid black;
+  width: fit-content;
+
+  -webkit-tap-highlight-color: rgba(255, 255, 255, 0) !important;
+  -webkit-focus-ring-color: rgba(255, 255, 255, 0) !important;
+  outline: none !important;
+}
+
+.drop-down-main {
+  display: flex;
+  padding: 2px 5px 2px 5px;
+  justify-content: space-between;
+  gap: 50px;
+}
+
+.drop-down-options {
+  border-top: 1px solid rgb(42, 33, 33);
+}
+
+.option {
+  padding: 2px 5px 2px 5px;
+}
+
+.option:hover {
+  cursor: pointer;
+  background-color: lightgrey;
+  color: blue;
+}
+
+.drop-down-main:hover {
+  cursor: pointer;
+}
+
+.drop-down-main-triangle {
+  transform: translateY(-3px);
+}
+
+.hidden {
+  display: none;
+}
