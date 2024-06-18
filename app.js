@@ -1,8 +1,8 @@
 let body = document.querySelector("body");
 
-let dropDownHeader = document.createElement('h1');
-dropDownHeader.innerHTML = 'Drop Down Menu'
-body.appendChild(dropDownHeader)
+let dropDownHeader = document.createElement("h1");
+dropDownHeader.innerHTML = "Drop Down Menu";
+body.appendChild(dropDownHeader);
 
 let dropDown = document.createElement("div");
 dropDown.classList.add("drop-down");
@@ -70,6 +70,70 @@ function toggleDropDown() {
   }
 }
 
-let carouselHeader = document.createElement('h1');
-carouselHeader.innerHTML = 'Image Carousel'
-body.appendChild(carouselHeader)
+let carouselHeader = document.createElement("h1");
+carouselHeader.innerHTML = "Image Carousel";
+body.appendChild(carouselHeader);
+
+let carousel = document.createElement("div");
+carousel.classList.add("carousel");
+let mainCarouselImage = document.createElement("img");
+mainCarouselImage.classList.add("main-carousel-image");
+let forwardCarouselImage = document.createElement("img");
+forwardCarouselImage.classList.add("forward-carousel-image");
+forwardCarouselImage.classList.add("not-main-image");
+let backwardCarouselImage = document.createElement("img");
+backwardCarouselImage.classList.add("backward-carousel-image");
+backwardCarouselImage.classList.add("not-main-image");
+
+let forwardButton = document.createElement("button");
+forwardButton.innerHTML = ">";
+let backwardButton = document.createElement("button");
+backwardButton.innerHTML = "<";
+
+let imagesArray = [
+  "assets/1.jpg",
+  "assets/2.jpg",
+  "assets/3.jpg",
+  "assets/4.jpg",
+];
+backwardCarouselImage.src = imagesArray[0];
+mainCarouselImage.src = imagesArray[1];
+forwardCarouselImage.src = imagesArray[2];
+
+let backImageIndex = parseInt(
+    backwardCarouselImage.src[backwardCarouselImage.src.length - 5]
+  );
+  let forwardImageIndex = parseInt(
+    forwardCarouselImage.src[forwardCarouselImage.src.length - 5]
+  );
+  let mainImageIndex = parseInt(
+    mainCarouselImage.src[mainCarouselImage.src.length - 5]
+  );
+
+  backImageIndex=backImageIndex-1
+  mainImageIndex=mainImageIndex-1
+  forwardImageIndex=forwardImageIndex-1
+
+function advanceCarouselFoward() {
+  backImageIndex=backImageIndex+1
+  mainImageIndex=mainImageIndex+1
+  forwardImageIndex=forwardImageIndex+1
+  if (backImageIndex > 3) {backImageIndex = 0}
+  if (mainImageIndex > 3) {mainImageIndex = 0}
+  if (forwardImageIndex > 3) {forwardImageIndex = 0}
+
+  backwardCarouselImage.src = imagesArray[backImageIndex]
+  mainCarouselImage.src = imagesArray[mainImageIndex]
+  forwardCarouselImage.src = imagesArray[forwardImageIndex]
+}
+
+forwardButton.addEventListener("click", () => {
+    advanceCarouselFoward();
+})
+
+carousel.appendChild(backwardButton);
+carousel.appendChild(backwardCarouselImage);
+carousel.appendChild(mainCarouselImage);
+carousel.appendChild(forwardCarouselImage);
+carousel.appendChild(forwardButton);
+body.append(carousel);
