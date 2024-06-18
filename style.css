@@ -32,9 +32,9 @@
   cursor: pointer;
 }
 
-.drop-down-main-triangle {
+/* .drop-down-main-triangle {
   transform: translateY(-3px);
-}
+} */
 
 .hidden {
   display: none;

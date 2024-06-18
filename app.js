@@ -34,7 +34,7 @@ let dropDownMainText = document.createElement("div");
 dropDownMainText.innerHTML = "Select";
 
 let dropDownMainTriangle = document.createElement("div");
-dropDownMainTriangle.innerHTML = "⌵";
+dropDownMainTriangle.innerHTML = "-";
 dropDownMainTriangle.classList.add("drop-down-main-triangle");
 
 dropDownMain.appendChild(dropDownMainText);
@@ -61,9 +61,15 @@ dropDownOptions.childNodes.forEach((element) => {
 function toggleDropDown() {
   if (isDropDownOn == false) {
     dropDownOptions.classList.remove("hidden");
+    dropDownMainTriangle.innerHTML = "+";
     isDropDownOn = true;
   } else {
     dropDownOptions.classList.add("hidden");
+    dropDownMainTriangle.innerHTML = "-";
     isDropDownOn = false;
   }
 }
+
+let carouselHeader = document.createElement('h1');
+carouselHeader.innerHTML = 'Image Carousel'
+body.appendChild(carouselHeader)
