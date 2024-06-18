@@ -96,9 +96,9 @@ let imagesArray = [
   "assets/3.jpg",
   "assets/4.jpg",
 ];
-backwardCarouselImage.src = imagesArray[0];
-mainCarouselImage.src = imagesArray[1];
-forwardCarouselImage.src = imagesArray[2];
+backwardCarouselImage.src = imagesArray[3];
+mainCarouselImage.src = imagesArray[0];
+forwardCarouselImage.src = imagesArray[1];
 
 let backImageIndex = parseInt(
     backwardCarouselImage.src[backwardCarouselImage.src.length - 5]
@@ -153,4 +153,66 @@ carousel.appendChild(backwardCarouselImage);
 carousel.appendChild(mainCarouselImage);
 carousel.appendChild(forwardCarouselImage);
 carousel.appendChild(forwardButton);
-body.append(carousel);
+
+let slider = document.createElement('div');
+slider.classList.add('slider');
+let sliderOptionOne = document.createElement('button');
+let sliderOptionTwo = document.createElement('button');
+let sliderOptionThree = document.createElement('button');
+let sliderOptionFour = document.createElement('button');
+
+sliderOptionOne.classList.add('slider-option')
+sliderOptionTwo.classList.add('slider-option')
+sliderOptionThree.classList.add('slider-option')
+sliderOptionFour.classList.add('slider-option')
+sliderOptionOne.classList.add('active')
+
+slider.appendChild(sliderOptionOne)
+slider.appendChild(sliderOptionTwo)
+slider.appendChild(sliderOptionThree)
+slider.appendChild(sliderOptionFour)
+
+let carouselHolder = document.createElement('div');
+carouselHolder.classList.add('carousel-holder')
+carouselHolder.appendChild(carousel)
+carouselHolder.appendChild(slider)
+body.append(carouselHolder);
+
+sliderOptionOne.addEventListener("click", () => {
+    sliderOptionOne.classList.add('active')
+    sliderOptionTwo.classList.remove('active')
+    sliderOptionThree.classList.remove('active')
+    sliderOptionFour.classList.remove('active')
+    backwardCarouselImage.src = imagesArray[3]
+    mainCarouselImage.src = imagesArray[0]
+    forwardCarouselImage.src = imagesArray[1]
+})
+sliderOptionTwo.addEventListener("click", () => {
+    sliderOptionOne.classList.remove('active')
+    sliderOptionTwo.classList.add('active')
+    sliderOptionThree.classList.remove('active')
+    sliderOptionFour.classList.remove('active')
+    backwardCarouselImage.src = imagesArray[0]
+    mainCarouselImage.src = imagesArray[1]
+    forwardCarouselImage.src = imagesArray[2]
+})
+
+sliderOptionThree.addEventListener("click", () => {
+    sliderOptionOne.classList.remove('active')
+    sliderOptionTwo.classList.remove('active')
+    sliderOptionThree.classList.add('active')
+    sliderOptionFour.classList.remove('active')
+    backwardCarouselImage.src = imagesArray[1]
+    mainCarouselImage.src = imagesArray[2]
+    forwardCarouselImage.src = imagesArray[3]
+})
+
+sliderOptionFour.addEventListener("click", () => {
+    sliderOptionOne.classList.remove('active')
+    sliderOptionTwo.classList.remove('active')
+    sliderOptionThree.classList.remove('active')
+    sliderOptionFour.classList.add('active')
+    backwardCarouselImage.src = imagesArray[2]
+    mainCarouselImage.src = imagesArray[3]
+    forwardCarouselImage.src = imagesArray[0]
+})
