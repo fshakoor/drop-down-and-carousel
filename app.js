@@ -125,6 +125,8 @@ function advanceCarouselFoward() {
   backwardCarouselImage.src = imagesArray[backImageIndex]
   mainCarouselImage.src = imagesArray[mainImageIndex]
   forwardCarouselImage.src = imagesArray[forwardImageIndex]
+
+  checkActiveNavButton(checkActiveNavButton(mainCarouselImage.src[mainCarouselImage.src.length - 5]))
 }
 
 function advanceCarouselBackward() {
@@ -138,6 +140,8 @@ function advanceCarouselBackward() {
     backwardCarouselImage.src = imagesArray[backImageIndex]
     mainCarouselImage.src = imagesArray[mainImageIndex]
     forwardCarouselImage.src = imagesArray[forwardImageIndex]
+
+    checkActiveNavButton(checkActiveNavButton(mainCarouselImage.src[mainCarouselImage.src.length - 5]))
 }
 
 forwardButton.addEventListener("click", () => {
@@ -179,40 +183,67 @@ carouselHolder.appendChild(slider)
 body.append(carouselHolder);
 
 sliderOptionOne.addEventListener("click", () => {
-    sliderOptionOne.classList.add('active')
-    sliderOptionTwo.classList.remove('active')
-    sliderOptionThree.classList.remove('active')
-    sliderOptionFour.classList.remove('active')
     backwardCarouselImage.src = imagesArray[3]
     mainCarouselImage.src = imagesArray[0]
     forwardCarouselImage.src = imagesArray[1]
+    checkActiveNavButton(mainCarouselImage.src[mainCarouselImage.src.length - 5])
 })
 sliderOptionTwo.addEventListener("click", () => {
-    sliderOptionOne.classList.remove('active')
-    sliderOptionTwo.classList.add('active')
-    sliderOptionThree.classList.remove('active')
-    sliderOptionFour.classList.remove('active')
     backwardCarouselImage.src = imagesArray[0]
     mainCarouselImage.src = imagesArray[1]
     forwardCarouselImage.src = imagesArray[2]
+    checkActiveNavButton(mainCarouselImage.src[mainCarouselImage.src.length - 5])
 })
 
 sliderOptionThree.addEventListener("click", () => {
-    sliderOptionOne.classList.remove('active')
-    sliderOptionTwo.classList.remove('active')
-    sliderOptionThree.classList.add('active')
-    sliderOptionFour.classList.remove('active')
     backwardCarouselImage.src = imagesArray[1]
     mainCarouselImage.src = imagesArray[2]
     forwardCarouselImage.src = imagesArray[3]
+    checkActiveNavButton(mainCarouselImage.src[mainCarouselImage.src.length - 5])
 })
 
 sliderOptionFour.addEventListener("click", () => {
-    sliderOptionOne.classList.remove('active')
-    sliderOptionTwo.classList.remove('active')
-    sliderOptionThree.classList.remove('active')
-    sliderOptionFour.classList.add('active')
     backwardCarouselImage.src = imagesArray[2]
     mainCarouselImage.src = imagesArray[3]
     forwardCarouselImage.src = imagesArray[0]
+    checkActiveNavButton(mainCarouselImage.src[mainCarouselImage.src.length - 5])
 })
+
+
+function checkActiveNavButton(curMain) {
+    curMain = parseInt(curMain)
+    if (curMain == 1) {
+        sliderOptionOne.classList.add('active')
+        sliderOptionTwo.classList.remove('active')
+        sliderOptionThree.classList.remove('active')
+        sliderOptionFour.classList.remove('active')
+    }
+
+    else if (curMain == 2) {
+        sliderOptionOne.classList.remove('active')
+        sliderOptionTwo.classList.add('active')
+        sliderOptionThree.classList.remove('active')
+        sliderOptionFour.classList.remove('active')
+    }
+
+    else if (curMain == 3) {
+        sliderOptionOne.classList.remove('active')
+        sliderOptionTwo.classList.remove('active')
+        sliderOptionThree.classList.add('active')
+        sliderOptionFour.classList.remove('active')
+    }
+
+    else if (curMain == 4) {
+        sliderOptionOne.classList.remove('active')
+        sliderOptionTwo.classList.remove('active')
+        sliderOptionThree.classList.remove('active')
+        sliderOptionFour.classList.add('active')
+    }
+}
+
+function autoForward() {
+    advanceCarouselFoward()
+    checkActiveNavButton(checkActiveNavButton(mainCarouselImage.src[mainCarouselImage.src.length - 5]))
+}
+
+setInterval(autoForward,5000)
